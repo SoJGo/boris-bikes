@@ -7,7 +7,7 @@ class DockingStation
         if !@dock
             fail "There is not bike walk please you lazy person!"
         else
-            Bike.new
+            @dock
         end
         
     end
