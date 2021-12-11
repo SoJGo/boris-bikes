@@ -1,8 +1,12 @@
 require_relative 'bike'
+
 class DockingStation
   attr_accessor :bikes
 
-  def initialize
+  DEFAULT_CAPACITY = 20
+
+  def initialize(capacity=DEFAULT_CAPACITY)
+    @capacity = capacity
     @bikes = []
    end
 
@@ -11,7 +15,8 @@ class DockingStation
   end
   
   def release_bike
-    empty? ? fail("Sorry, No Bikes Available") : bikes.pop
+    fail("Sorry, No Working Bikes Available") if empty? || none_working?
+    bikes.delete_at(bikes.index { |bike| bike.working? })
   end
 
   private
@@ -21,6 +26,10 @@ class DockingStation
   end
 
   def full?
-    bikes.size >= 20
+    bikes.size >= @capacity
+  end
+
+  def none_working?
+    bikes.find { |bike| bike.working? } == nil
   end
 end
