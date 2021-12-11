@@ -8,6 +8,6 @@ class DockingStation
     end
 
     def dock(bike)
-        @bike = bike
+        @bike ? fail("Sorry, Dock is Full") : @bike = bike
     end
 end
