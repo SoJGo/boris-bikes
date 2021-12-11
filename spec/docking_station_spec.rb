@@ -16,13 +16,13 @@ describe DockingStation do
   end
 
   describe '#release_bike' do
-    it 'raises an error if there is not a bike in the dock' do
-      expect { subject.release_bike }.to raise_error "Sorry, No Bikes Available"
-    end
-
     it 'releases working bike if a bike has been docked' do
       subject.dock(Bike.new)
       expect(subject.release_bike.working?).to eq true
+    end
+
+    it 'raises an error if there is not a bike in the dock' do
+      expect { subject.release_bike }.to raise_error "Sorry, No Bikes Available"
     end
   end
 end
