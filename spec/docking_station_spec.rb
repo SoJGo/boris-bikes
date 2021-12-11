@@ -6,7 +6,7 @@ describe DockingStation do
     
   describe '#dock' do
     it 'adds a bike to docking_station' do
-      expect(subject.dock(bike)).to eq bike
+      expect(subject.dock(Bike.new)).to eq subject.bike
     end
   end
 
