@@ -11,7 +11,8 @@ class DockingStation
    end
 
   def dock(bike)
-    full? ? fail("Sorry, Dock is Full") : bikes << bike
+    fail("Sorry, Dock is Full") if full?
+    bikes << bike
   end
   
   def release_bike
@@ -22,7 +23,7 @@ class DockingStation
   private
 
   def empty?
-    bikes.empty?        
+    bikes.empty?
   end
 
   def full?
